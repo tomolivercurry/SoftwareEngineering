@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>FTG FITNESS</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+  </style>
+<!--link relevant style & fonts-->
+
+</head>
+<body>
+  <div class="pimg1">
+    <div class="maintitle">
+      <span class="border">
+        FTG FITNESS
+      </span>
+
+    </div>
+    <p class="introtext">FTG Fitness is a fitness calculation site for anything fitness related.</p>
+    <p class="introtexttwo">Select an option to continue.</p>
+
+    <a href="#bmihead" class="topbutton button1">BMI CALC</a>
+    <a href="#whrhead" class="topbutton button2">WHR CALC</a>
+    <a href="#bmrhead" class="topbutton button3">BMR CALC</a>
+    <a href="#strengthhead" class="topbutton button4">STRENGTH CALC</a>
+    <a href="#pacehead" class="topbutton button5">PACE CALC</a>
+    <a href="#energyhead" class="topbutton button6">ENERGY CONV</a>
+    <!--Buttons to jump to each calculation without scrolling-->
+
+    <p class="introtextthree">Or scroll down to explore...</p>
+  </div>
+
+
+  <section class="section section-one">
+    <div id="bmihead"></div>
+    <h2 class="calcheader">BMI CALCULATION</h2>
+
+    <p>
+      This will be BMI Calculation
+    </p>
+
+    <form id="bmiform">
+    Mass (kg): <input type="text" name="bmimass"><br>
+    Height (cm): <input type="text" name="bmiheight"><br>
+    <input type="button" action="/index.html" value="Submit">
+    </form>
+    <!--Input form to obtain user data-->
+
+    <p id="bmioutput">BMI RESULT</p>
+    <!--js links to this id to update-->
+
+    <script>
+    function bmiCalcFunction() {
+
+        document.getElementById("bmiform");
+
+      //using getElementById to update html element
+
+      let bmiheightsquared = Math.pow(bmiheight, 2);
+      let bmi = (bmimass / (bmiheightsquared));
+
+      document.getElementById("bmioutput").innerHTML = bmi;
+    }
+    </script>
+    <!--js script for maths to work out bmi value-->
+
+
+
+
+
+  </section>
+
+  <div class="pimg2">
+  </div>
+
+  <section class="section section-two">
+    <div id="whrhead"></div>
+    <h2 class="calcheader">WHR CALCULATION</h2>
+
+    <p>
+      This will be WHR (Waist to Hip) Calculation
+    </p>
+
+    <form id="whrform">
+    Waist Circumference (cm): <input type="text" name="whrwaist"><br>
+    Hip Circumference (cm): <input type="text" name="whrhip"><br>
+    Gender (M/F): <input type="text" name="whrgender"><br>
+    <input type="button" action="/index.html" value="Submit">
+    </form>
+
+    <p id="whroutput">WHR RESULT</p>
+
+    <script>
+    function whrCalcFunction() {
+
+
+      document.getElementById("whrform");
+
+
+    let whr = (whrwaist / whrhip);
+
+    document.getElementById("whroutput").innerHTML = whr;
+    }
+    </script>
+    <!--whr calculation-->
+
+
+  </section>
+
+  <div class="pimg3">
+  </div>
+
+  <section class="section section-three">
+    <div id="bmrhead"></div>
+    <h2 class="calcheader">BMR CALCULATION</h2>
+
+    <p>
+      This will be BMR (basic metablolic rate) calculation
+    </p>
+
+    <form id="bmrform">
+    Weight (kg):<input type="text" name="bmrweight"><br>
+    Height (cm): <input type="text" name="bmrheight"><br>
+    Age (years): <input type="text" name="bmrage"><br>
+    Gender (M/F): <input type="text" name="bmrgender"><br>
+    <input type="button" action="/index.html" value="Submit">
+    </form>
+
+    <p id="bmroutput">BMR RESULT</p>
+
+    <script>
+    function bmrCalcFunction() {
+
+
+        document.getElementById("bmrform");
+
+
+      if (bmrgender == "M") {
+        let bmr = (88.362 + (13.397 * bmrweight) + (4.799 * bmrheight) - (5.677 * bmrage));
+      } else if (bmrgender == "F") {
+        let bmr = (447.593 + (9.247 * bmrweight) + (3.098 * bmrheight) - (4.330 * bmrage));
+      } else {
+        alert("Please enter M or F.")
+      }
+
+      document.getElementById("bmroutput").innerHTML = bmr;
+
+    }
+    </script>
+    <!--bmr calculation, if else statement since result depends on gender-->
+
+  </section>
+
+  <div class="pimg4">
+  </div>
+
+  <section class="section section-four">
+    <div id="strengthhead"></div>
+    <h2 class="calcheader">STRENGTH CALCULATION</h2>
+
+    <p>
+      This will be strength calculation
+    </p>
+
+    <form id="strengthform">
+    Body Weight (kg):<input type="text" name="strengthweight"><br>
+    Bench (1), Squat (2), Deadlift (3):<input type="text" name="strengthoption"><br>
+    Max Lift Weight (kg: <input type="text" name="strengthliftweight"><br>
+    <input type="button" action="/index.html" value="Submit">
+    </form>
+
+    <p id="strengthoutput">STRENGTH RESULT</p>
+
+    <script>
+    function strengthCalcFunction() {
+
+
+        document.getElementById("strengthform");
+
+
+      if (strengthoption == 1) {
+        if (strengthliftweight < strengthweight) {
+          let level = "beginner";
+        } else if (strengthliftweight = strengthweight){
+          let level = "novice";
+        } else if (strengthliftweight > strengthweight && strengthliftweight < (strengthweight * 1.5)) {
+          let level = "intermediate";
+        } else if (strengthliftweight >= (strengthweight * 1.5) && strengthliftweight < (strengthweight * 2)) {
+          let level = "advanced";
+        } else if (strengthliftweight > (strengthweight * 2)) {
+          let level = "elite";
+        }
+        //bench level calculation ^
+
+      } else if (strengthoption == 2) {
+        if (strengthliftweight < strengthweight) {
+          let level = "beginner";
+        } else if (strengthliftweight = strengthweight) {
+          let level = "novice";
+        } else if (strengthliftweight > strengthweight && strengthliftweight < (strengthweight * 2)) {
+          let level = "intermediate";
+        } else if (strengthliftweight >= (strengthweight * 2) && strengthliftweight < (strengthweight * 4)) {
+          let level = "advanced";
+        } else if (strengthliftweight > (strengthweight * 5)) {
+          let level = "elite";
+        }
+        //squat level calculation ^
+
+      } else if (strengthoption == 3) {
+        if (strengthliftweight < strengthweight) {
+          let level = "beginner";
+        } else if (strengthliftweight = strengthweight) {
+          let level = "novice";
+        } else if (strenghtliftweight > strengthweight && strengthliftweight < (strengthweight * 2)) {
+          let level = "intermediate";
+        } else if (strengthliftweight >= (strengthweight * 2) && strengthliftweight < (strengthweight * 4)) {
+          let level = "advanced";
+        } else if (strengthliftweight > (strengthweight * 5)) {
+          let level = "elite";
+        }
+        //deadlift level calculation ^
+
+      } else {
+        alert ("Please select 1, 2 or 3")
+      }
+
+      document.getElementById("strengthoutput").innerHTML = level;
+
+    }
+    </script>
+
+  </section>
+
+  <div class="pimg5">
+  </div>
+
+  <section class="section section-five">
+    <div id="pacehead"></div>
+    <h2 class="calcheader">PACE CALCULATION</h2>
+
+    <p>
+      This will be pace calculation
+    </p>
+
+      <form id="paceform">
+      Distance (km):<input type="text" name="pacedistance"><br>
+      Time (seconds):<input type="text" name="paceseconds"><br>
+      <input type="button" action="/index.html" value="Submit">
+      </form>
+
+      <p id="paceoutput">PACE RESULT</p>
+
+      <script>
+
+
+        
+
+
+      function paceCalcFunction() {
+        let timeMin = (paceseconds / 60);
+        //convert seconds to minutes
+
+        let pace = (pacedistance / timeMin);
+        //pace calculation - simple
+
+        document.getElementById("paceoutput").innerHTML = pace;
+
+      }
+      </script>
+
+  </section>
+
+  <div class="pimg6">
+  </div>
+
+  <section class="section section-six">
+    <div id="energyhead"></div>
+    <h2 class="calcheader">FOOD ENERGY CONVERSION</h2>
+
+    <p>
+      This will be food energy conversion
+    </p>
+
+    <form id="foodconvform">
+    Carbs (g):<input type="text" name="foodcarbs"><br>
+    Fats (g):<input type="text" name="foodfats"><br>
+    Protein (g):<input type="text" name="foodprotein"><br>
+    <input type="button" action="/index.html" value="Submit">
+    </form>
+
+    <p id="foodconvoutput">FOOD ENG CONV RESULT</p>
+
+    <script>
+    function foodConvFunction() {
+
+
+        document.getElementById("foodconvform");
+
+
+      let totalCalories = ((foodcarbs * 9) + (foodfats * 9) + (protein * 4));
+      //calc via calories per gram of each
+
+      document.getElementById("foodconvoutput").innerHTML = totalCalories;
+
+    }
+    </script>
+
+  </section>
+
+
+</body>
+</html>
